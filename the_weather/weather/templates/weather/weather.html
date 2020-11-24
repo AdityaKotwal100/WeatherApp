@@ -35,6 +35,9 @@
                                 </button>
                             </div>
                         </div>
+                        {% if message %}
+                        <div class = "notification {{ message_class }}">{{ message }}</div>
+                        {% endif %}
                     </form>
                 </div>
             </div>
@@ -62,8 +65,12 @@
                                     </p>
                                 </div>
                             </div>
+                            <div class = "media-right">
+                                <a href = "{% url 'delete_city' city.city %}">
+                                    <button class="class"></button>
+                                </a>
+                            </div>
                         </article>
-
                     </div>
                     {% endfor %}
                 </div>
