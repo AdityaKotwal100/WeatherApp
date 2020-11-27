@@ -75,5 +75,29 @@ def weather_forecast(request,city_name):
     print(s.text)
     """
     url_forecast = "http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&appid=2a9da8f0ce5b25af4cebee6ea78af333"
-    s = requests.get(url_forecast.format(city_name))
+    s = requests.get(url_forecast.format(city_name)).json()
+    forecast = []
+    lists = s['list']
+    for list in lists:
+        city_forecast = {
+        'temperature' : list['main']['temp'],
+        'max_temperature' : list['main']['temp_max'],
+        'min_temperature' : list['main']['temp_min'],
+        'weather' : list['weather'][0]['main'],
+        'icon' : list['weather'][0]['icon'],
+        'timestamp': list['dt_txt']
+        }
+
+        forecast.append(city_forecast)
+    context = {
+        'city_forecast' : forecast,
+        'city_name' : city_name
+        }
+    return render(request,'weather/forecast.html', context)
+    
+
+
+
+    
+
     
