@@ -10,15 +10,16 @@
 </head>
 
 <body>
-    <section class="hero is-primary">
-        <div class="hero-body">
+    <section class="hero is-primary" style = "background-color: red;">
+        <div class="hero-body text-center">
             <div class="container">
-                <h1 class="title text-center">
+                <h1 class="title">
                     5 hour forecast of {{ city_name }}.
                 </h1>
             </div>
         </div>
     </section>
+    
     <section class="section">
         <div class="container">
             <div class="columns">
@@ -30,9 +31,9 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-offset-4 is-4">
+                <div class="row">
                     {% for forecast in city_forecast %}
-                    <div class="box">
+                    <div class="box col-sm-3">
                         <article class="media">
                             <div class="media-left">
                                 <figure class="image is-50x50">
@@ -44,15 +45,19 @@
                                     <p>
                                         <span class="title">{{ forecast.timestamp }}</span>
                                         <br>
-                                        <span class="subtitle">{{ forecast.temperature}}° C</span><br>
-                                        <span class="subtitle">{{ forecast.max_temperature}}° C</span><br>
-                                        <span class="subtitle">{{ forecast.min_temperature}}° C</span><br>
-                                        <span class="subtitle">{{ forecast.weather}}</span><br>
+                                        <h5><b>Temperature: </b>{{ forecast.temperature}} °C</h5><br>  
+                                        <h5><b>Minimum temperature: </b>{{ forecast.min_temperature}} °C</h5><br>
+                                        <h5><b>Maximum temperature: </b>{{ forecast.max_temperature}} °C</h5><br>
+                                        <h5><b>Weather: </b>{{ forecast.weather}}</h5><br>
                                     </p>
                                 </div>
                             </div>
                         </article>
-                    </div><br>
+                    </div>
+                    {% if forloop.counter|divisibleby:"2" and not forloop.last %}
+                </div>
+                <div class="row">
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>
