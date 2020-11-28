@@ -13,34 +13,35 @@
         <div class="hero-body has-text-centered">
             <div class="container">
                 <h1 class="title">
-                    5 hour forecast of {{ city_name }}.
+                    <b>
+                    Next 5 days in {{ city_name }}.
+                    </b>
                 </h1>
             </div>
         </div>
     </section>
-    <div class = "container" style = "padding-top: 30px; margin-left: 30px;">
+    <div class="container" style="padding-top: 30px;">
         <div class="columns">
             <div class="row">
                 {% for forecast in city_forecast %}
-                <div class = "col-md-3">
-                <div class="box" style = "margin : 20px">
-                    <h5>{{ forecast.timestamp }}</h5>
-                    <div class="content">
-                        <div class="media-center"">
-                            <figure class="image is-40x40">
-                                <img src=" http://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png"
-                                    alt="Image">
-                            </figure>
+                <div class="col-sm-3">
+                    <div class="box" style="margin : 20px">
+                        <h5>{{ forecast.timestamp }}</h5>
+                        <div class="content">
+                            <div class="media-center"">
+                            <figure class=" image is-40x40">
+                                <img src=" http://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png" alt="Image">
+                                </figure>
+                            </div>
+                            <p>
+                            <h5><b>Temperature: </b>{{ forecast.temperature}}°C</h5>
+                            <h5><b>Feels like: </b>{{ forecast.feels_like }}°C</h5>
+                            <h5><b>Weather: </b>{{ forecast.weather}}</h5><br>
+                            </p>
                         </div>
-                        <p>
-                        <h5><b>Temperature: </b>{{ forecast.temperature}}°C</h5>
-                        <h5><b>Feels like: </b>{{ forecast.feels_like }}°C</h5>
-                        <h5><b>Weather: </b>{{ forecast.weather}}</h5><br>
-                        </p>
                     </div>
                 </div>
-            </div>
-                {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                {% if forloop.counter|divisibleby:"4" and not forloop.last %}
             </div>
             <div class="row">
                 {% endif %}
