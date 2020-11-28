@@ -83,6 +83,7 @@ def weather_forecast(request,city_name):
         'temperature' : list['main']['temp'],
         'max_temperature' : list['main']['temp_max'],
         'min_temperature' : list['main']['temp_min'],
+        'feels_like' : list['main']['feels_like'],
         'weather' : list['weather'][0]['main'],
         'icon' : list['weather'][0]['icon'],
         'timestamp': list['dt_txt']
