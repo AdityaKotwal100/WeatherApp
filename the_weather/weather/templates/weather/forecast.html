@@ -5,10 +5,18 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
-    
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<body style = "background-color: #3F3F3F;">
+</head>
+<style>
+    .wrapper {
+        min-height: 100%;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+</style>
+
+<body style="background-color: #3F3F3F;">
 
     <section class="hero is-primary" style="background-color: #202020;">
         <div class="hero-body has-text-centered">
@@ -17,47 +25,57 @@
                     5 hour forecast of {{ city_name }}.
                 </h1>
                 <a href="{% url 'home'%}">
-                    <!--<button class="class" style=" background-color: white; border: 0px solid ;">&#128712</button>!-->
                     <button class="button is-warning">Go back</button>
                 </a>
             </div>
         </div>
     </section>
-   <div class = "container" style = "padding-top: 30px; margin-left: 30px;">
+    <div class="container" style="padding-top: 30px; margin-left: 30px;">
         <div class="columns">
             <div class="row">
                 {% for forecast in city_forecast %}
-                <div class = "columns">
-                <div class="box" style = "margin : 20px">
-                    <h5><b>{{ forecast.date }}</b></h5><br>
-                    <h4><b>{{ forecast.time }}</b></h4>
-                    <div class="content">
-                        <div class="media-center"">
-                            <figure class="image is-40x40">
-                                <img src=" http://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png"
-                                    alt="Image">
-                            </figure>
+                <div class="columns">
+                    <div class="box" style="margin : 20px">
+                        <h5><b>{{ forecast.date }}</b></h5><br>
+                        <h4><b>{{ forecast.time }}</b></h4>
+                        <div class="content">
+                            <div class="media-center"">
+                            <figure class=" image is-40x40">
+                                <img src=" http://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png" alt="Image">
+                                </figure>
+                            </div>
+                            <p>
+                            <h5><b>Temperature: </b>{{ forecast.temperature}}°C</h5>
+                            <h5><b>Feels like: </b>{{ forecast.feels_like }}°C</h5>
+                            <h5><b>Weather: </b>{{ forecast.weather}}</h5><br>
+                            </p>
                         </div>
-                        <p>
-                        <h5><b>Temperature: </b>{{ forecast.temperature}}°C</h5>
-                        <h5><b>Feels like: </b>{{ forecast.feels_like }}°C</h5>
-                        <h5><b>Weather: </b>{{ forecast.weather}}</h5><br>
-                        </p>
                     </div>
                 </div>
-            </div>
-                {% if forloop.counter|divisibleby:4 %}</div><div class = "row">{% endif %}
+                {% if forloop.counter|divisibleby:4 %}</div>
+            <div class="row">{% endif %}
                 {% if forloop.last %} </div>
-            
-                {% endif %}
-                {% endfor %}
-            </div>
+
+            {% endif %}
+            {% endfor %}
         </div>
     </div>
-    <footer class="footer text-center" style = "margin-top:10px; background-color:  #202020;">
-        <p>
-            Made by Aditya Kotwal. All rights reserved @2020.
-        </p>
-    </footer>
+    </div>
+
+    <div class="wrapper">
+        <header class="page-header">This is the header</header>
+        <article class="page-body">
+            <p>Main page content here, add more if you want to see the footer push down.</p>
+        </article>
+        <footer class="footer text-center" style="margin-top:10px; background-color:  #202020;">
+            <p style="color:whitesmoke; padding-left: 33%; padding-top: 10px">
+                Made by Aditya Kotwal. All rights reserved @2020. Powered by 
+                <a href = "https://openweathermap.org/" target="_blank">openweathermap.</a>
+                <a href="https://github.com/AdityaKotwal100" target="_blank">
+                    <p style="padding-top: 10px;padding-right: 10px; color:whitesmoke; padding-left: 50%; class=" footer-text"
+                        id="showGithub"><i class="fa fa-github fa-lg" aria-hidden="true"></i></p>
+                </a>
+        </footer>
+    </div>
 
 </body>
