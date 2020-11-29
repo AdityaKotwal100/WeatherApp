@@ -62,19 +62,6 @@ def delete_city(request, city_name):
     return redirect('home')
 
 def weather_forecast(request,city_name):
-    """
-    url_city = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=2a9da8f0ce5b25af4cebee6ea78af333'
-    s = requests.get(url_city.format(city_name)).json()
-    
-    
-    lat = s['coord']['lat']
-    lon = s['coord']['lon']
-    url_one_call = 'https://api.openweathermap.org/data/2.5/onecall?lat={}lon={}&units=metric&appid=2a9da8f0ce5b25af4cebee6ea78af333'
-    #url_one_call = 'https://api.openweathermap.org/data/2.5/onecall?q={}&units=metric&appid=2a9da8f0ce5b25af4cebee6ea78af333'
-    s = requests.get(url_one_call.format(lat,lon))
-    #s = requests.get(url_one_call)
-    print(s.text)
-    """
     url_forecast = "http://api.openweathermap.org/data/2.5/forecast?q={}&units=metric&appid=2a9da8f0ce5b25af4cebee6ea78af333"
     s = requests.get(url_forecast.format(city_name)).json()
     forecast = []

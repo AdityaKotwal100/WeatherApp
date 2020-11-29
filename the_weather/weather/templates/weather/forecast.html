@@ -8,9 +8,9 @@
     
 </head>
 
-<body>
+<body style = "background-color: #3F3F3F;">
 
-    <section class="hero is-primary" style="background-color: red;">
+    <section class="hero is-primary" style="background-color: #202020;">
         <div class="hero-body has-text-centered">
             <div class="container">
                 <h1 class="title">
@@ -18,12 +18,11 @@
                 </h1>
                 <a href="{% url 'home'%}">
                     <!--<button class="class" style=" background-color: white; border: 0px solid ;">&#128712</button>!-->
-                    <button type="button" class="btn btn-primary">Go back</button>
+                    <button class="button is-warning">Go back</button>
                 </a>
             </div>
         </div>
     </section>
-<<<<<<< HEAD
    <div class = "container" style = "padding-top: 30px; margin-left: 30px;">
         <div class="columns">
             <div class="row">
@@ -32,15 +31,6 @@
                 <div class="box" style = "margin : 20px">
                     <h5><b>{{ forecast.date }}</b></h5><br>
                     <h4><b>{{ forecast.time }}</b></h4>
-=======
-    <div class = "container" style = "padding-top: 30px; margin-left: 30px;">
-        <div class="columns">
-            <div class="row">
-                {% for forecast in city_forecast %}
-                <div class = "col-md-3">
-                <div class="box" style = "margin : 20px">
-                    <h5>{{ forecast.timestamp }}</h5>
->>>>>>> 6871063a088ee66068dbd9607fdb164d7e7b4df4
                     <div class="content">
                         <div class="media-center"">
                             <figure class="image is-40x40">
@@ -56,25 +46,18 @@
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
                 {% if forloop.counter|divisibleby:4 %}</div><div class = "row">{% endif %}
                 {% if forloop.last %} </div>
             
-=======
-                {% if forloop.counter|divisibleby:4 and not forloop.last %}
-            </div>
-            <div class="row">
->>>>>>> 6871063a088ee66068dbd9607fdb164d7e7b4df4
                 {% endif %}
                 {% endfor %}
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <footer class="footer" style = "padding-top:100px;">
-=======
-    <footer class="footer">
->>>>>>> 6871063a088ee66068dbd9607fdb164d7e7b4df4
+    <footer class="footer text-center" style = "margin-top:10px; background-color:  #202020;">
+        <p>
+            Made by Aditya Kotwal. All rights reserved @2020.
+        </p>
     </footer>
 
 </body>
