@@ -48,6 +48,7 @@
             <div class="columns">
                 <div class="column is-offset-4 is-3">
                     {% for city in weather_data %}
+<<<<<<< HEAD
                     <!--<a href = "{% url 'weather_forecast' city.city %}">!-->
 
                     <div class="box">
@@ -83,11 +84,46 @@
                     </div>
 
                     <!--</a>!-->
+=======
+                        <!--<a href = "{% url 'weather_forecast' city.city %}">!-->
+                        
+                            <div class="box">
+                                <article class="media">
+                                    <div class="media-left">
+                                        <figure class="image is-50x50">
+                                            <img src=" http://openweathermap.org/img/wn/{{ city.icon }}@2x.png"
+                                                alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="media-content">
+                                        <div class="content" style = "position: center;">
+                                            <p>
+                                                <span class="title">{{ city.city }}</span>
+                                                <br>
+                                                <span class="subtitle">{{ city.temperature}}° C</span>
+                                                <br>{{ city.description }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="media-right">
+                                        <a href="{% url 'delete_city' city.city %}">
+                                            <button class="class" style="background-color: white; border: 0px solid ;">&#10006</button>
+                                        </a>
+                                    </div>
+                                </article>
+                            </div>
+                        
+                        <!--</a>!-->
+>>>>>>> 6871063a088ee66068dbd9607fdb164d7e7b4df4
                     {% endfor %}
                 </div>
             </div>
         </div>
     </section>
+<<<<<<< HEAD
     <footer class="footer" style="position: fixed; bottom: 0; width: 100%;">
+=======
+    <footer class="footer" style = "position: fixed; bottom: 0; width: 100%;">
+>>>>>>> 6871063a088ee66068dbd9607fdb164d7e7b4df4
     </footer>
 </body>
