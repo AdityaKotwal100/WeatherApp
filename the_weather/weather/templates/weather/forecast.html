@@ -3,61 +3,58 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.css" />
+    
 </head>
 
 <body>
-    <section class="hero is-primary">
-        <div class="hero-body">
+
+    <section class="hero is-primary" style="background-color: red;">
+        <div class="hero-body has-text-centered">
             <div class="container">
-                <h1 class="title text-center">
+                <h1 class="title">
                     5 hour forecast of {{ city_name }}.
                 </h1>
+                <a href="{% url 'home'%}">
+                    <!--<button class="class" style=" background-color: white; border: 0px solid ;">&#128712</button>!-->
+                    <button type="button" class="btn btn-primary">Go back</button>
+                </a>
             </div>
         </div>
     </section>
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-offset-4 is-4">
+   <div class = "container" style = "padding-top: 30px; margin-left: 30px;">
+        <div class="columns">
+            <div class="row">
+                {% for forecast in city_forecast %}
+                <div class = "columns">
+                <div class="box" style = "margin : 20px">
+                    <h5><b>{{ forecast.date }}</b></h5><br>
+                    <h4><b>{{ forecast.time }}</b></h4>
+                    <div class="content">
+                        <div class="media-center"">
+                            <figure class="image is-40x40">
+                                <img src=" http://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png"
+                                    alt="Image">
+                            </figure>
+                        </div>
+                        <p>
+                        <h5><b>Temperature: </b>{{ forecast.temperature}}°C</h5>
+                        <h5><b>Feels like: </b>{{ forecast.feels_like }}°C</h5>
+                        <h5><b>Weather: </b>{{ forecast.weather}}</h5><br>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-offset-4 is-4">
-                    {% for forecast in city_forecast %}
-                    <div class="box">
-                        <article class="media">
-                            <div class="media-left">
-                                <figure class="image is-50x50">
-                                    <img src=" http://openweathermap.org/img/wn/{{ forecast.icon }}@2x.png" alt="Image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <div class="content">
-                                    <p>
-                                        <span class="title">{{ forecast.timestamp }}</span>
-                                        <br>
-                                        <span class="subtitle">{{ forecast.temperature}}° C</span><br>
-                                        <span class="subtitle">{{ forecast.max_temperature}}° C</span><br>
-                                        <span class="subtitle">{{ forecast.min_temperature}}° C</span><br>
-                                        <span class="subtitle">{{ forecast.weather}}</span><br>
-                                    </p>
-                                </div>
-                            </div>
-                        </article>
-                    </div><br>
-                    {% endfor %}
-                </div>
+                {% if forloop.counter|divisibleby:4 %}</div><div class = "row">{% endif %}
+                {% if forloop.last %} </div>
+            
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
-    </section>
-    <footer class="footer">
+    </div>
+    <footer class="footer" style = "padding-top:100px;">
     </footer>
+
 </body>

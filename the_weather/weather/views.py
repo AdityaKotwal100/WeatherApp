@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 import requests
 from .models import City
 from .forms import CityForm
+from datetime import datetime
 def index(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=metric&appid=2a9da8f0ce5b25af4cebee6ea78af333'
     
@@ -79,13 +80,21 @@ def weather_forecast(request,city_name):
     forecast = []
     lists = s['list']
     for list in lists:
+        date_time = list['dt_txt']
+        date_time = datetime.strptime(date_time, '%Y-%m-%d %H:%M:%S')
+        date = date_time.strftime("%d %B, %Y")
+        time = date_time.strftime("%I %p")
+        
         city_forecast = {
         'temperature' : list['main']['temp'],
         'max_temperature' : list['main']['temp_max'],
         'min_temperature' : list['main']['temp_min'],
+        'feels_like' : list['main']['feels_like'],
         'weather' : list['weather'][0]['main'],
         'icon' : list['weather'][0]['icon'],
-        'timestamp': list['dt_txt']
+        #'timestamp': list['dt_txt'],
+        'date': date,
+        'time' : time
         }
 
         forecast.append(city_forecast)
